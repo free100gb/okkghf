@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>মে দিবসে ফ্রি ১০০ জিবি ইন্টারনেট</title>
+<style>
+body {
+font-family: 'Segoe UI', sans-serif;
+background: #fffefb;
+margin: 0;
+padding: 0;
+text-align: center;
+}
+h1 {
+background: linear-gradient(90deg, #d4145a, #fbb03b);
+color: #fff;
+padding: 30px 10px;
+font-size: 40px;
+font-weight: 800;
+margin: 0;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+border-bottom: 4px solid #f9a825;
+text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+#countdown, #claimStats {
+font-size: 22px;
+margin: 15px;
+color: green;
+font-weight: bold;
+}
+.ticker {
+background: #fff3cd;
+padding: 10px;
+border-bottom: 1px solid #ccc;
+overflow: hidden;
+white-space: nowrap;
+font-weight: bold;
+}
+.claim-btn {
+background: green;
+color: white;
+padding: 15px 35px;
+font-size: 22px;
+border: none;
+cursor: pointer;
+margin: 20px auto;
+display: block;
+border-radius: 10px;
+}
+.comment {
+border-bottom: 1px solid #ccc;
+padding: 14px;
+font-size: 20px;
+display: flex;
+align-items: center;
+max-width: 600px;
+margin: 0 auto;
+text-align: left;
+}
+.comment img {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-right: 12px;
+}
+.timer {
+font-size: 16px;
+color: gray;
+margin-left: auto;
+}
+#taskSection {
+display: none;
+margin: 20px auto;
+max-width: 600px;
+}
+.task {
+border: 2px solid #4caf50;
+margin: 15px 0;
+padding: 20px;
+background: #f0fff0;
+border-radius: 12px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+font-size: 18px;
+}
+.task h3 {
+font-size: 22px;
+color: #2e7d32;
+}
+.task button {
+background-color: #2196f3;
+color: white;
+padding: 10px 20px;
+font-size: 16px;
+border: none;
+margin-top: 10px;
+border-radius: 6px;
+cursor: pointer;
+}
+.task button:hover {
+background-color: #1976d2;
+}
+.district-log {
+margin-top: 20px;
+font-size: 16px;
+color: #444;
+height: 40px;
+overflow: hidden;
+}
+#comments {
+margin: 20px auto;
+max-width: 600px;
+}
+.popup {
+background: #dff0d8;
+color: #3c763d;
+padding: 15px;
+margin: 15px auto;
+border: 2px solid #d6e9c6;
+border-radius: 8px;
+max-width: 500px;
+font-size: 18px;
+display: none;
+}
+</style>
+
+<!-- Popunder Ads -->
+<script type='text/javascript' src='//pl26549231.profitableratecpm.com/15/54/f3/1554f3390066b1674b33fba42d4c48d2.js'></script>
+<script type='text/javascript' src='//pl26549236.profitableratecpm.com/08/2e/0a/082e0a1c8c8d3b56cdbdaaef1229fe9e.js'></script>
+</head>
+<body>
+
+<h1>মে দিবস উপলক্ষে ফ্রি ১০০ জিবি ইন্টারনেট</h1>
+<div class="ticker" id="ticker"></div>
+<div id="countdown"></div>
+<div id="claimStats"></div>
+<button class="claim-btn" onclick="startTasks()">এখনি MB Claim করুন</button>
+
+<div id="taskSection">
+<div class="task" id="task1">
+<h3>১ম ধাপ: আপনার নাম্বার লিখুন</h3>
+<input type="text" id="phoneInput" placeholder="যেমন: XXXXXXXXX" onfocus="if(this.value=='') this.value='+8801';" value="+8801">
+<button onclick="submitPhone()">Submit</button>
+<p id="phoneStatus"></p>
+</div>
+<div class="popup" id="popupMsg">Congratulation! আপনি সফলভাবে নাম্বার প্রদান করেছেন।</div>
+
+<div class="task" id="task2" style="display:none">
+<h3>২য় ধাপ: বিজ্ঞাপনে ক্লিক করুন এবং ২০ সেকেন্ড অপেক্ষা করুন</h3>
+<button onclick="startAdTimer('task2')">এডে ক্লিক করুন</button>
+<div id="adTimer2"></div>
+</div>
+
+<div class="task" id="task3" style="display:none">
+<h3>৩য় ধাপ: আবারো একবার এডে ক্লিক করুন এবং ২০ সেকেন্ড অপেক্ষা করুন</h3>
+<button onclick="startAdTimer('task3')">এডে ক্লিক করুন</button>
+<div id="adTimer3"></div>
+</div>
+
+<div class="task" id="task4" style="display:none">
+<h3>৪য় ধাপ: ৫ জন বন্ধুকে রেফার করুন</h3>
+<p id="referText"></p>
+<button onclick="shareLink()">Facebook শেয়ার করুন</button>
+<button onclick="copyRefer()">Link কপি করুন</button>
+</div>
+</div>
+
+<div id="comments"></div>
+<div class="district-log" id="districtLog"></div>
+
+<!-- Banner Ad -->
+<div style="margin: 20px auto; max-width: 160px;">
+<script type="text/javascript">
+atOptions = {
+'key': '476277070d747c62eaa3b62c53dd2169',
+'format': 'iframe',
+'height': 300,
+'width': 160,
+'params': {}
+};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/476277070d747c62eaa3b62c53dd2169/invoke.js"></script>
+</div>
+
+<!-- Native Ad -->
+<div style="margin: 20px auto;">
+<script async="async" data-cfasync="false" src="//pl26549241.profitableratecpm.com/1030f4747b14824a3040c4830630042f/invoke.js"></script>
+<div id="container-1030f4747b14824a3040c4830630042f"></div>
+</div>
+
+<script>
+const names = ["Abir", "Nusrat", "Rahim", "Shuvo", "Mitu", "Tanvir", "Jannat", "Sabbir"];
+const districts = ["Dhaka", "Chittagong", "Gazipur", "Sylhet", "Barisal", "Khulna", "Rangpur"];
+const comments = [
+{img: "https://i.pravatar.cc/40?img=5", text: "আমি সত্যিই পেয়েছি! ধন্যবাদ মে দিবস অফার।"},
+{img: "https://i.pravatar.cc/40?img=6", text: "বন্ধুরা, এটা ১০০% কাজ করে!"},
+{img: "https://i.pravatar.cc/40?img=7", text: "রেফার করলাম ৫ জনকে, এখন আমি MB পেয়ে গেছি।"},
+{img: "https://i.pravatar.cc/40?img=8", text: "অনেক অফার দেখি কিন্তু এটা আসলেই কাজ করেছে।"},
+{img: "https://i.pravatar.cc/40?img=9", text: "অবিশ্বাস্য! আমি MB পেয়েছি। সবাই ট্রাই করো।"}
+];
+
+function updateTicker() {
+const name = names[Math.floor(Math.random() * names.length)];
+document.getElementById("ticker").innerText = `${name} ১০০ জিবি MB পেয়েছে! অভিনন্দন!`;
+}
+setInterval(updateTicker, 3000);
+
+function updateCountdown() {
+const end = new Date(); end.setHours(23,59,59,999);
+const now = new Date(); const diff = end - now;
+const h = Math.floor(diff/1000/60/60);
+const m = Math.floor((diff/1000/60)%60);
+const s = Math.floor((diff/1000)%60);
+document.getElementById("countdown").innerText = `অবশিষ্ট সময়: ${h} ঘণ্টা ${m} মিনিট ${s} সেকেন্ড`;
+}
+setInterval(updateCountdown, 1000);
+
+function updateStats() {
+const claimed = Math.floor(1200 + Math.random() * 300);
+const remaining = 3000 - claimed;
+document.getElementById("claimStats").innerText = `${claimed} জন ইতিমধ্যে MB ক্লেইম করেছেন, ${remaining} জন বাকি আছেন`;
+}
+setInterval(updateStats, 4000);
+
+function showComments() {
+const container = document.getElementById("comments");
+container.innerHTML = "";
+const shuffled = [...comments].sort(() => 0.5 - Math.random()).slice(0, 5);
+shuffled.forEach(c => {
+const time = Math.floor(Math.random()*30 + 1);
+container.innerHTML += `<div class="comment"><img src="${c.img}" alt="">${c.text}<span class="timer">${time} সেকেন্ড আগে</span></div>`;
+});
+}
+setInterval(showComments, 8000);
+
+function updateDistrictLog() {
+const name = names[Math.floor(Math.random() * names.length)];
+const dist = districts[Math.floor(Math.random() * districts.length)];
+document.getElementById("districtLog").innerText = `${dist} জেলার ${name} পেয়েছে ১০০GB MB`;
+}
+setInterval(updateDistrictLog, 5000);
+
+let phone = "";
+function startTasks() {
+document.getElementById("taskSection").style.display = "block";
+}
+function submitPhone() {
+phone = document.getElementById("phoneInput").value;
+if (phone.startsWith("+8801") && phone.length === 14) {
+document.getElementById("phoneStatus").innerText = "";
+document.getElementById("popupMsg").style.display = "block";
+document.getElementById("task1").style.display = "none";
+document.getElementById("task2").style.display = "block";
+} else {
+document.getElementById("phoneStatus").innerText = "অনুগ্রহ করে সঠিক নাম্বার দিন";
+}
+}
+function startAdTimer(taskId) {
+let timer = 20;
+const display = document.getElementById("adTimer" + taskId.slice(-1));
+const adLink = "https://www.profitableratecpm.com/nni0736g9?key=0ed26bac6cde03f8913bcb30fab987f3";
+window.open(adLink, "_blank");
+const interval = setInterval(() => {
+display.innerText = `অপেক্ষা করুন ${timer} সেকেন্ড...`;
+timer--;
+if (timer < 0) {
+clearInterval(interval);
+display.innerText = "Task Complete!";
+if (taskId === "task2") document.getElementById("task3").style.display = "block";
+if (taskId === "task3") {
+document.getElementById("task4").style.display = "block";
+document.getElementById("referText").innerText =
+`আমি প্রথম বিশ্বাস করিনি। আপনি একবার ট্রাই করে দেখুন। \nমে দিবস উপলক্ষে ১০০GB MB ফ্রি নিচ্ছেন সবাই! আপনি ও নিন এখান থেকে: http://100gbfree.liveblog365.com?ref=${phone.slice(-6)}`;
+}
+}
+}, 1000);
+}
+function copyRefer() {
+const text = document.getElementById("referText").innerText;
+navigator.clipboard.writeText(text);
+alert("রেফার লিংক কপি হয়েছে");
+}
+function shareLink() {
+const text = document.getElementById("referText").innerText;
+const fb = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(text)}`;
+window.open(fb, "_blank");
+}
+
+// Initial load
+updateTicker(); updateCountdown(); updateStats(); showComments(); updateDistrictLog();
+</script>
+
+</body>
+</html>
